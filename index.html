@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Water — The Source of Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep:    #0a2342;
+      --ocean:   #1a5276;
+      --mid:     #1f8aad;
+      --light:   #5dade2;
+      --foam:    #aed6f1;
+      --mist:    #eaf4fb;
+      --white:   #ffffff;
+      --text:    #1c2b3a;
+      --muted:   #5b7a90;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(10, 35, 66, 0.85);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--foam);
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--foam); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, rgba(10,35,66,0.55) 0%, rgba(26,82,118,0.35) 60%, rgba(10,35,66,0.7) 100%),
+        url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1600&auto=format&fit=crop') center/cover no-repeat;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem 4rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--foam);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      color: var(--white);
+      line-height: 1.1;
+      max-width: 780px;
+      margin-bottom: 1.4rem;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(255,255,255,0.8);
+      max-width: 560px;
+      font-weight: 300;
+      margin-bottom: 2.8rem;
+    }
+    .hero-cta {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: var(--light);
+      color: var(--deep);
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero-cta:hover { background: var(--foam); transform: translateY(-2px); }
+
+    .wave-divider {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      margin-top: -2px;
+    }
+    .wave-divider svg { display: block; }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--deep);
+      padding: 4rem 1.5rem;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--light);
+      line-height: 1;
+    }
+    .stat-label {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 400;
+    }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 6rem 1.5rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      color: var(--deep);
+      margin-bottom: 1.2rem;
+      max-width: 560px;
+    }
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      font-weight: 400;
+    }
+
+    /* ── WHY WATER ── */
+    .why { background: var(--mist); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+    .why-image img {
+      width: 100%;
+      border-radius: 1.5rem;
+      object-fit: cover;
+      height: 420px;
+      box-shadow: 0 24px 60px rgba(10,35,66,0.18);
+    }
+    .why-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+    .why-card {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 1.4rem 1.6rem;
+      display: flex; align-items: flex-start; gap: 1.1rem;
+      box-shadow: 0 4px 20px rgba(10,35,66,0.07);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .why-card:hover { box-shadow: 0 8px 32px rgba(10,35,66,0.14); transform: translateY(-3px); }
+    .why-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 0.75rem;
+      background: var(--mist);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .why-card h3 { font-size: 1rem; font-weight: 600; color: var(--deep); margin-bottom: 0.25rem; }
+    .why-card p  { font-size: 0.9rem; color: var(--muted); }
+
+    /* ── FACTS ── */
+    .facts { background: var(--white); }
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .fact-card {
+      border: 1.5px solid var(--foam);
+      border-radius: 1.2rem;
+      padding: 2rem;
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .fact-card:hover { border-color: var(--light); box-shadow: 0 8px 28px rgba(26,82,118,0.1); }
+    .fact-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--mid);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .fact-card p { font-size: 0.95rem; color: var(--muted); }
+
+    /* ── CONSERVATION ── */
+    .conservation { background: linear-gradient(135deg, var(--deep) 0%, var(--ocean) 100%); }
+    .conservation .section-title { color: var(--white); }
+    .conservation .section-lead  { color: rgba(255,255,255,0.7); }
+    .conservation .section-tag   { color: var(--foam); }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .tip-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 1.2rem;
+      padding: 1.8rem;
+      color: var(--white);
+      transition: background 0.2s;
+    }
+    .tip-card:hover { background: rgba(255,255,255,0.14); }
+    .tip-emoji { font-size: 2rem; margin-bottom: 0.9rem; display: block; }
+    .tip-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .tip-card p  { font-size: 0.88rem; color: rgba(255,255,255,0.65); }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      background: var(--mist);
+      text-align: center;
+      padding: 6rem 1.5rem;
+    }
+    blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      color: var(--deep);
+      max-width: 720px;
+      margin: 0 auto;
+      font-style: italic;
+      line-height: 1.45;
+    }
+    cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-style: normal;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--foam); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-image { order: -1; }
+      .why-image img { height: 260px; }
+    }
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .why-card, .fact-card, .tip-card, .hero-cta { transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Aqua</div>
+    <ul class="nav-links">
+      <li><a href="#why">Why Water</a></li>
+      <li><a href="#facts">Facts</a></li>
+      <li><a href="#conservation">Conservation</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">The Source of All Life</p>
+    <h1>Water is the essence of existence</h1>
+    <p>Covering 71% of our planet, water is the foundation of every ecosystem, every body, and every civilization ever built.</p>
+    <a href="#why" class="hero-cta">Explore Water</a>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="100%" height="80">
+      <path fill="#0a2342" d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-value">71%</div>
+        <div class="stat-label">of Earth's surface covered by water</div>
+      </div>
+      <div>
+        <div class="stat-value">60%</div>
+        <div class="stat-label">of the human body is water</div>
+      </div>
+      <div>
+        <div class="stat-value">2B+</div>
+        <div class="stat-label">people lack safe drinking water</div>
+      </div>
+      <div>
+        <div class="stat-value">3.5%</div>
+        <div class="stat-label">of Earth's water is freshwater</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY WATER -->
+  <section class="why" id="why">
+    <div class="section-inner">
+      <span class="section-tag">Why It Matters</span>
+      <h2 class="section-title">Water sustains everything we know</h2>
+      <p class="section-lead">From the cells in your body to the crops in your fields, water is the universal solvent that makes life possible.</p>
+      <div class="why-grid">
+        <div class="why-image">
+          <img src="https://images.unsplash.com/photo-1559825481-12a05cc00344?w=800&auto=format&fit=crop" alt="Clear blue ocean water from above" />
+        </div>
+        <div class="why-cards">
+          <div class="why-card">
+            <div class="why-icon">🧬</div>
+            <div>
+              <h3>Biological Foundation</h3>
+              <p>Every chemical reaction in your body depends on water as a solvent, transport medium, and temperature regulator.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🌾</div>
+            <div>
+              <h3>Agriculture & Food</h3>
+              <p>70% of global freshwater use goes to agriculture. Growing 1 kg of wheat requires roughly 1,500 litres of water.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">⚡</div>
+            <div>
+              <h3>Energy Production</h3>
+              <p>Hydropower provides about 16% of the world's electricity, making water one of our most powerful renewable resources.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🌍</div>
+            <div>
+              <h3>Climate Regulation</h3>
+              <p>Oceans absorb over 90% of the excess heat from climate change and drive global weather patterns and currents.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACTS -->
+  <section class="facts" id="facts">
+    <div class="section-inner">
+      <span class="section-tag">Fascinating Facts</span>
+      <h2 class="section-title">Numbers that put water in perspective</h2>
+      <div class="facts-grid">
+        <div class="fact-card">
+          <div class="fact-number">97%</div>
+          <p>of Earth's water is saltwater in the oceans — too salty to drink or use for irrigation without treatment.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-number">4B yrs</div>
+          <p>Water has existed on Earth for roughly 4 billion years. The water in your glass may have once passed through a dinosaur.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-number">~8 min</div>
+          <p>A person can survive roughly 3 days without water. Some desert-adapted organisms can pause life itself until water returns.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-number">326M</div>
+          <p>Cubic miles of water exist on Earth in all forms — oceans, glaciers, groundwater, rivers, lakes, and the atmosphere.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-number">0°C</div>
+          <p>Water is the only natural substance found in all three states — solid, liquid, and gas — at temperatures common on Earth's surface.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-number">10,000+</div>
+          <p>Distinct bodies of water have been named on Earth, from the Pacific Ocean to hidden underground aquifers below deserts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSERVATION -->
+  <section class="conservation" id="conservation">
+    <div class="section-inner">
+      <span class="section-tag">Take Action</span>
+      <h2 class="section-title">Small changes, massive impact</h2>
+      <p class="section-lead">Freshwater is finite. Here's how you can help protect it every single day.</p>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-emoji">🚿</span>
+          <h3>Shorten Your Shower</h3>
+          <p>Cutting your shower by just 2 minutes saves up to 10 gallons of water — add up to real change over a year.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji">🌧️</span>
+          <h3>Collect Rainwater</h3>
+          <p>A simple rain barrel can capture hundreds of gallons to water your garden without touching the tap.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji">🔧</span>
+          <h3>Fix Leaks Fast</h3>
+          <p>A dripping faucet wastes over 3,000 gallons per year. A running toilet can waste 200 gallons in a single day.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji">🥦</span>
+          <h3>Mind Your Diet</h3>
+          <p>Eating less meat significantly reduces your water footprint — beef requires ~1,800 gallons per pound produced.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji">🌱</span>
+          <h3>Plant Native Species</h3>
+          <p>Native plants are adapted to local rainfall patterns and require far less irrigation than exotic ornamentals.</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-emoji">🧹</span>
+          <h3>Skip the Hose</h3>
+          <p>Use a broom instead of a hose to clean driveways and sidewalks — saves up to 80 gallons each time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <blockquote>
+      "Water is the driving force of all nature."
+      <cite>— Leonardo da Vinci</cite>
+    </blockquote>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built with care for our most precious resource &nbsp;·&nbsp; <a href="https://www.who.int/news-room/fact-sheets/detail/drinking-water" target="_blank" rel="noopener">Learn more at WHO</a></p>
+  </footer>
+
+</body>
+</html>
